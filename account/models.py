@@ -1,5 +1,5 @@
 from django.db import models
-from managers import CustomUserManager
+from .managers import CustomUserManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
 
@@ -14,6 +14,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
+    is_writer = models.BooleanField(default=False, verbose_name='Are you writer?')
 
 
     USERNAME_FIELD = 'email'
