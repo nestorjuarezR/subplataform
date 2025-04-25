@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from .forms import CreateUserForm
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 
 
 
@@ -50,3 +50,7 @@ def user_login(request):
     return render(request, 'account/login.html', context=context)
 
 
+
+def user_logout(request):
+    auth_logout(request)
+    return redirect('home')
