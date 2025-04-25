@@ -1,6 +1,9 @@
 from django.shortcuts import redirect, render
 from .forms import CreateUserForm
 from django.http import HttpResponse
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login as auth_login
+
 
 
 def home(request):
@@ -24,7 +27,26 @@ def register(request):
 
 
 
-def login(request):
-    return render(request, 'account/login.html')
+def user_login(request):
+
+
+    form = AuthenticationForm()
+
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None and user.is_writer==True:
+                auth_login(request, user)
+                return HttpResponse('Welcome to your dashboard Writer')
+            if user is not None and user.is_writer==False:
+                auth_login(request, user)
+                return HttpResponse('Welcome Client')
+            
+    context = {'form': form}
+
+    return render(request, 'account/login.html', context=context)
 
 
