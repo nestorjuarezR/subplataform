@@ -40,10 +40,10 @@ def user_login(request):
             user = authenticate(username=username, password=password)
             if user is not None and user.is_writer==True:
                 auth_login(request, user)
-                return HttpResponse('Welcome to your dashboard Writer')
+                return redirect('writer_dashboard')
             if user is not None and user.is_writer==False:
                 auth_login(request, user)
-                return HttpResponse('Welcome Client')
+                return redirect('client_dashboard')
             
     context = {'form': form}
 
