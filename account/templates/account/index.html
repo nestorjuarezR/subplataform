@@ -24,58 +24,91 @@
 </head>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
 
-  <a class="navbar-brand main-heading">
+{% block nav %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
 
-    &nbsp; Edenthought
+    <a class="navbar-brand main-heading">
 
-  </a>
+      &nbsp; Edenthought
 
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-
-  </button>
+    </a>
 
 
-  <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
 
 
-    <ul class="navbar-nav ms-auto">
+    <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
 
 
-      &nbsp; &nbsp; &nbsp;
+      <ul class="navbar-nav ms-auto">
 
 
-      <li class="nav-item">
+        &nbsp; &nbsp; &nbsp;
 
-        <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'register' %}">Register</a>
+        <li class="nav-item">
 
-      </li>
+          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'register' %}">DashBorad</a>
+
+        </li>
+
+        &nbsp; &nbsp; &nbsp;
+
+        {% if user.is_writer %}
+        &nbsp; &nbsp; &nbsp;
+        <li class="nav-item">
+          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'create_article' %}">Create Article</a>
+        </li>
+        &nbsp; &nbsp; &nbsp;
+
+        <li class="nav-item">
+          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'login' %}">My Articles</a>
+        </li>
+        &nbsp; &nbsp; &nbsp;
+
+        {% else %}
+        <li class="nav-item">
+          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'login' %}">Read Article</a>
+        </li>          
+        {% endif %}
+        &nbsp; &nbsp; &nbsp;
+
+        {% if user.is_authenticated %}
+                  <li class="nav-item">
+
+          <a class="btn btn-danger navbar-btn" type="button" href="{% url 'login' %}">Salir</a>
+
+        </li>
+        {% else %}
+        <li class="nav-item">
+
+          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'register' %}">Register</a>
+
+        </li>
+        &nbsp; &nbsp; &nbsp;
+        <li class="nav-item">
+          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
+
+        &nbsp; &nbsp; &nbsp;
 
 
-      &nbsp; &nbsp; &nbsp;
+      </ul>
 
 
-      <li class="nav-item">
-
-        <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'login' %}">Login</a>
-
-      </li>
+    </div>
 
 
-      &nbsp; &nbsp; &nbsp;
+  </nav>
+{% endblock nav %}
 
 
-    </ul>
 
-
-  </div>
-
-
-</nav>
 
 
 <body>

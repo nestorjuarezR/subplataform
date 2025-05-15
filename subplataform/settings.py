@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'account',                    #Django App
     'client',                     #Django App
     'writer',                     #Django App
-    'crispy_forms',               #Django Crispy Forms
+    'crispy_forms',                 #Django Crispy Forms
     'crispy_bootstrap5',          #Django Crispy Forms Bootstrap 5
 ]
 

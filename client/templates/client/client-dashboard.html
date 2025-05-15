@@ -1,13 +1,20 @@
+{% extends 'account/index.html' %}
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client DashBoard</title>
 </head>
 <body>
-    <p>Este es el DashBoard del Cliente</p>
-    <p>Bienvenido {{userName}}</p>
-    <a href="{% url 'logout'  %}">Salir</a>
+    
+    {% block content %}   
+        <p>Este es el DashBoard del Cliente</p>
+        <p>Bienvenido {{userName}}</p>
+        <a href="{% url 'logout'  %}">Salir</a>
+    {% endblock content %}
+
 </body>
 </html>
