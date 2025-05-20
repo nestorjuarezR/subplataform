@@ -36,3 +36,28 @@ def my_articles(request):
 
     context = {'articles': articles}
     return render(request, 'writer/my-articles.html', context=context)
+
+
+@login_required(login_url='login')
+def update_article(request, pk):
+    try:
+
+        article = Article.objects.get(id=pk, user=request.user)
+
+    except:
+        return redirect('my_articles')
+
+
+    form = ArticleForm(instance=article)
+
+    if request.method == 'POST':
+
+        form = ArticleForm(request.POST, instance=article)
+
+        if form.is_valid():
+            form.save()
+            return redirect('my_articles')
+        
+    context = {'form': form}
+
+    return render(request, 'writer/update-article.html', context=context)

@@ -10,6 +10,7 @@
             <h3>{{articulo.title}}</h3>
             <p>{{articulo.content}}</p>
             <p>Fecha de publicacion: {{articulo.date_posted}}</p>
+            <a href="{% url 'update_article' articulo.id %}">Update</a>
         </div>
     {% endfor %}
         
