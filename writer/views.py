@@ -61,3 +61,21 @@ def update_article(request, pk):
     context = {'form': form}
 
     return render(request, 'writer/update-article.html', context=context)
+
+
+
+@login_required(login_url='login')
+def delete_article(request, pk):
+    try:
+        article = Article.objects.get(id=pk, user=request.user)
+    except:
+        return redirect('my_articles')
+
+    form = ArticleForm(instance=article)
+    
+    if request.method == 'POST':
+        article.delete()
+        return redirect('my_articles')
+    
+    context = {'form': form}
+    return render(request, 'writer/delete-article.html', context=context)

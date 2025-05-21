@@ -10,7 +10,9 @@
             <h3>{{articulo.title}}</h3>
             <p>{{articulo.content}}</p>
             <p>Fecha de publicacion: {{articulo.date_posted}}</p>
-            <a href="{% url 'update_article' articulo.id %}">Update</a>
+            <a class="btn btn-warning" href="{% url 'update_article' articulo.id %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'delete_article' articulo.id %}">Delete</a>
+
         </div>
     {% endfor %}
         
