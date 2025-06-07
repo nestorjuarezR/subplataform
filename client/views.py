@@ -6,6 +6,19 @@ from .models import Subscription
 
 @login_required(login_url='login')
 def client_dashboard(request):
+    try:
+        subDetails = Subscription.objects.get(user=request.user)
+        Subscription_plan = subDetails.subscription_plan
+        print(Subscription_plan)
+        context = {
+            'SubPlan': Subscription_plan
+        }
+        return render(request, 'client/client-dashboard.html', context=context)
+    except:
+        Subscription_plan = 'None'
+        print(Subscription_plan)
+        context = { 'SubPlan': Subscription_plan}
+
     return render(request, 'client/client-dashboard.html')
 
 
@@ -17,7 +30,7 @@ def browse_articles(request):
         subDetails = Subscription.objects.get(user = request.user, is_activate=True)
 
     except:
-        return redirect('client_dashboard')
+        return render(request, 'client/subscription-locked.html')
     
     current_subscription_plan = subDetails.subscription_plan
     
@@ -32,3 +45,9 @@ def browse_articles(request):
 
     return render(request, 'client/browse-articles.html', context=context)
 
+
+
+
+@login_required(login_url='login')
+def subscription_locked(request):
+    return render(request, 'client/subscription-locked.html')

@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.client_dashboard, name='client_dashboard'),
-    path('browse-articles/', views.browse_articles, name='browse_articles')
+    path('browse-articles/', views.browse_articles, name='browse_articles'),
+    path('subscription-locked/', views.subscription_locked, name='subscription_locked')
 ]
