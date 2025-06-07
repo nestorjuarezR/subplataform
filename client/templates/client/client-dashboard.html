@@ -9,12 +9,14 @@
     <title>Client DashBoard</title>
 </head>
 <body>
-    
-    {% block content %}   
-        <p>Este es el DashBoard del Cliente</p>
-        <p>Bienvenido {{userName}}</p>
-        <a href="{% url 'logout'  %}">Salir</a>
+
+    {% block content %}
+        <div class="container bg-white shadow-md p-5 form-layout text-center mt-5">
+            <h5> 👋 Welcome {{user.first_name }} </h5>
+
+        </div>
     {% endblock content %}
+
 
 </body>
 </html>

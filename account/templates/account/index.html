@@ -77,22 +77,20 @@
 
 
         {% else %}
-        <li class="nav-item">
-          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'client_dashboard' %}">Client DashBoard</a>
-        </li>          
-        {% endif %}
-        &nbsp; &nbsp; &nbsp;
+          <li class="nav-item">
+            <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'client_dashboard' %}">Client DashBoard</a>
+          </li>          
+          &nbsp; &nbsp; &nbsp;
 
-        <li class="nav-item">
-          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'client_dashboard' %}">Browse Articles</a>
-        </li>          
-        {% endif %}
-        &nbsp; &nbsp; &nbsp;
+          <li class="nav-item">
+            <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'client_dashboard' %}">Browse Articles</a>
+          </li>          
+          &nbsp; &nbsp; &nbsp;
 
-        <li class="nav-item">
-          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'login' %}">Read Article</a>
-        </li>          
-        {% endif %}
+          <li class="nav-item">
+            <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'login' %}">Read Article</a>
+          </li>          
+          {% endif %}
         &nbsp; &nbsp; &nbsp;
 
         {% if user.is_authenticated %}
