@@ -52,7 +52,7 @@
 
         <li class="nav-item">
 
-          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'register' %}">DashBorad</a>
+          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'writer_dashboard' %}">DashBorad</a>
 
         </li>
 
@@ -77,6 +77,18 @@
 
 
         {% else %}
+        <li class="nav-item">
+          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'client_dashboard' %}">Client DashBoard</a>
+        </li>          
+        {% endif %}
+        &nbsp; &nbsp; &nbsp;
+
+        <li class="nav-item">
+          <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'client_dashboard' %}">Browse Articles</a>
+        </li>          
+        {% endif %}
+        &nbsp; &nbsp; &nbsp;
+
         <li class="nav-item">
           <a class="btn btn-secondary navbar-btn" type="button" href="{% url 'login' %}">Read Article</a>
         </li>          
