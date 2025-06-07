@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import ArticleForm, UpdateUserForm
 from django.http import HttpResponse
 from .models import Article
-
+from account.models import CustomUser
 
 @login_required(login_url='login')
 def writer_dashboard(request):
@@ -94,3 +94,14 @@ def account_management(request):
 
     context = {'form': form}
     return render(request, 'writer/account-management.html', context=context)
+
+
+@login_required(login_url='login')
+def delete_account(request):
+    
+    if request.method == 'POST':
+        deleteUSer = CustomUser.objects.get(email=request.user)
+        deleteUSer.delete()
+        return redirect('login')
+    
+    return render(request, 'writer/delete-account.html')
