@@ -1,0 +1,21 @@
+{% extends 'account/index.html' %}
+{% load static %}
+
+
+{% block content %}
+    <br>    
+    {% for articulo in AllClientArticles  %}
+
+        <div class="container bg-white shadow-md p-5 form-layout mb-4">
+            <h3>{{articulo.title}}</h3>
+            <p>{{articulo.content}}</p>
+            <p>Fecha de publicacion: {{articulo.date_posted}}</p>
+            {{articulo.is_premium|yesno:"⭐ Premium ,Free"}}
+                
+            <hr>
+
+        </div>
+    {% endfor %}
+        
+{% endblock content %}
+    
